@@ -61,7 +61,6 @@ public class SmsActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mTo.setText("");
                                     mBody.setText("");
                                     Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
                                 }
@@ -77,14 +76,14 @@ public class SmsActivity extends AppCompatActivity {
 
     Call post(String url, Callback callback) throws IOException {
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
         Date dateobj = new Date();
 
         DatabaseHelper db = new DatabaseHelper(SmsActivity.this);
         Random rnd = new Random();
         int n = 100000 + rnd.nextInt(900000);
 
-        String s = mBody.getText().toString() + " Your OTP is: " + n;
+        String s = mBody.getText().toString() + " Your OTP is: " + String.valueOf(n);
         db.saveSms(new Sms(name, df.format(dateobj),String.valueOf(n), 0));
         RequestBody formBody = new FormBody.Builder()
                 .add("To", mTo.getText().toString())

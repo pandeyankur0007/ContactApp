@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">ContactApp</string>
-    <string name="backend_url">http://98ac6619.ngrok.io/sms</string>
+    <string name="backend_url">http://c187ce92.ngrok.io/sms</string>
 </resources>
